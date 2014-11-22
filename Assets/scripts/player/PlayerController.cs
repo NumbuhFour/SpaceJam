@@ -4,7 +4,7 @@ using System.Collections;
 public class PlayerController : MonoBehaviour {
 	public float speed;
 	public float rotationSpeed = 3;
-
+	
 	private Rigidbody2D rigid;
 	// Use this for initialization
 	void Start () {
@@ -15,7 +15,7 @@ public class PlayerController : MonoBehaviour {
 	void Update () {
 		float horiz = Input.GetAxisRaw("Horizontal");
 		float vert = Input.GetAxisRaw("Vertical");
-
+		
 		if(horiz != 0){
 			this.rigid.AddTorque(rotationSpeed * horiz * Time.deltaTime * 1000);
 			//this.transform.Rotate(new Vector3(0,0,rotationSpeed*horiz));
@@ -24,7 +24,7 @@ public class PlayerController : MonoBehaviour {
 			//Vector3 position = this.transform.position;
 			//position += this.transform.up*speed*vert;
 			//this.transform.position = position;
-			this.rigid.AddForce((Vector2)this.transform.up * speed * vert * Time.deltaTime * 1000);
+			this.rigid.AddForce((Vector2)this.transform.up * speed * vert * Time.deltaTime * 1000 * -1);
 		}
 	}
 }
